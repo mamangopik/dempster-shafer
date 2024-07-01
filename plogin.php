@@ -25,12 +25,12 @@ if ($cek > 0) {
 		$_SESSION['username'] = $username;
 		$_SESSION['tingkat'] = "admin";
 		$_SESSION['id_admin'] = $data['id_admin'];
-		header('location:admin/pakar.php'); //jika berhasil login, maka masuk ke file yang dituju
+		header('location:admin/statistik.php'); //jika berhasil login, maka masuk ke file yang dituju
 	} elseif ($data['tingkat']=="pakar") {
 		$_SESSION['username'] = $username;
 		$_SESSION['tingkat'] = "pakar";
 		$_SESSION['id_admin'] = $data['id_admin'];
-		header('location:admin/pakar.php');
+		header('location:admin/statistik.php');
 	} else {
 		$_SESSION["error"] = $error;
 		header("location: login.php");

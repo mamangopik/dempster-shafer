@@ -11,7 +11,7 @@ $row = mysqli_fetch_array($login);
 if($row['username'] == $username && $row['password'] == $password) {
 		session_start(); //memulai fungsi session
 		$_SESSION['username'] = $username;
-	header("location: ../admin/profil.php");
+	header("location: ../admin/statistik.php");
 } else {
 	header("location: ../login.php");
 }

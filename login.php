@@ -7,7 +7,7 @@ if(!isset($_SESSION['username'])){
 } else {
 	$username = $_SESSION["username"];
 	$id_admin = $_SESSION['id_admin'];
-	header('location:admin/pakar.php');
+	header('location:admin/statistik.php');
 }
 require_once('koneksi/koneksi.php');
 ?>
