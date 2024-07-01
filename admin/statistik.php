@@ -2,8 +2,16 @@
 
 include "../controller/c_Riwayat.php";
 $r = new Riwayat();
-
 $data = $r->TampilSemua();
+include "../controller/c_Gejala.php";
+$g = new Gejala();
+$data_g = $g->TampilSemua();
+include "../controller/c_Hama.php";
+$h = new Penyakit();
+$data_h = $h->TampilSemua();
+include "../controller/c_Admin.php";
+$p = new Admin();
+$data_p = $p->GetPakarAll();
 ?>
 
 
@@ -56,7 +64,7 @@ $data = $r->TampilSemua();
                 <div class="jumbotron">
                     <div class="container">
                         <h2>Hama Terdata</h2>
-                        <h1 id="thama" class="bg btn-outline-primary">50</h1>
+                        <h1 id="thama" class="bg btn-outline-primary"><?php echo count($data_h); ?></h1>
                     </div>
                 </div>
             </div>
@@ -65,7 +73,7 @@ $data = $r->TampilSemua();
                 <div class="jumbotron">
                     <div class="container">
                         <h2>Gejala Terdata</h2>
-                        <h1 id="tgejala" class="bg btn-outline-primary">50</h1>
+                        <h1 id="tgejala" class="bg btn-outline-primary"><?php echo count($data_g); ?></h1>
                     </div>
                 </div>
             </div>
@@ -74,7 +82,7 @@ $data = $r->TampilSemua();
                 <div class="jumbotron">
                     <div class="container">
                         <h2>Total Pakar</h2>
-                        <h1 id="tpakar" class="bg btn-outline-primary">50</h1>
+                        <h1 id="tpakar" class="bg btn-outline-primary"><?php echo count($data_p); ?></h1>
                     </div>
                 </div>
             </div>
