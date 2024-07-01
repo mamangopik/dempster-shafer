@@ -55,7 +55,7 @@ $data_p = $p->GetPakarAll();
                 <div class="jumbotron">
                     <div class="container">
                         <h2>Total Diagnosa</h2>
-                        <h1 id="tdiagnosa" class="bg btn-outline-primary"><?php echo count($data); ?></h1>
+                        <h1 id="tdiagnosa" class="bg btn-outline-primary" style="text-align:center;"><?php echo count($data); ?></h1>
                     </div>
                 </div>
             </div>
@@ -64,7 +64,7 @@ $data_p = $p->GetPakarAll();
                 <div class="jumbotron">
                     <div class="container">
                         <h2>Hama Terdata</h2>
-                        <h1 id="thama" class="bg btn-outline-primary"><?php echo count($data_h); ?></h1>
+                        <h1 id="thama" class="bg btn-outline-primary" style="text-align:center;"><?php echo count($data_h); ?></h1>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@ $data_p = $p->GetPakarAll();
                 <div class="jumbotron">
                     <div class="container">
                         <h2>Gejala Terdata</h2>
-                        <h1 id="tgejala" class="bg btn-outline-primary"><?php echo count($data_g); ?></h1>
+                        <h1 id="tgejala" class="bg btn-outline-primary" style="text-align:center;"><?php echo count($data_g); ?></h1>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@ $data_p = $p->GetPakarAll();
                 <div class="jumbotron">
                     <div class="container">
                         <h2>Total Pakar</h2>
-                        <h1 id="tpakar" class="bg btn-outline-primary"><?php echo count($data_p); ?></h1>
+                        <h1 id="tpakar" class="bg btn-outline-primary" style="text-align:center;"><?php echo count($data_p); ?></h1>
                     </div>
                 </div>
             </div>
@@ -119,8 +119,6 @@ if (!isset($data)) {
     // var_dump($penyakit);
     // Count occurrences of each item
     $counts = array_count_values($penyakit);
-    var_dump($counts);
-    echo $counts["Ulat"];
 
     // Calculate the total number of items
     $total = count($penyakit);

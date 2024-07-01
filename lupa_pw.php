@@ -47,22 +47,33 @@ $db = 'spdempstershaferv1';
 $user = 'root';
 $pass = '';
 
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Could not connect to the database: " . $e->getMessage());
+$mysqli = new mysqli($host, $user, $pass, $db);
+// Check the connection
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
-
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['email'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         // Query to find the user by email
-        $stmt = $pdo->prepare('SELECT password FROM admin WHERE email = :email');
-        $stmt->execute(['email' => $email]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        // Prepare the query
+        $email = $mysqli->real_escape_string($email);
+        $query = "SELECT * FROM admin WHERE email = '$email'";
+
+        // Execute the query
+        $result = $mysqli->query($query);
+
+        // Fetch the result
+        if ($result) {
+            $user = $result->fetch_assoc();
+        } else {
+            $user = null;
+        }
+
+        // Close the connection
+        $mysqli->close();
         
         if ($user) {
             $password = $user['password'];
